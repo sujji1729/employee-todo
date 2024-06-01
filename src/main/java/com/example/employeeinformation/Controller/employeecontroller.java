@@ -23,15 +23,11 @@ public class employeecontroller {
 	@Autowired
 	employeerepo employeerepoo;
 	
-	
 	@GetMapping(value = "/userform")
 	public String userform() { 
 		return "userform"; 
 	}
-	
-	
-	
-	
+
 	
 	@PostMapping(value = "/newEmployeeDetails")
 	public String addEmployeeDetails(@ModelAttribute employeeTable employeeData, Model model) {
@@ -41,24 +37,21 @@ public class employeecontroller {
 		  return "homepage";
 	}
 	
-	
-		 
+	 
 	@GetMapping(value = "/homepage") 
 	public String getAllEmployees(Model model){
 		
 		List<employeeTable> allEmployees = employeerepoo.findAll();
 		model.addAttribute("allEmployees", allEmployees);
 			
-		return "homePage";
-		
+		return "homePage";	
 	}
 	
 	//show create user html page
 	@GetMapping(value = "/createuser")
 	public String createpage(){
 			
-		return "userform";
-		
+		return "userform";	
 	}
 	
 	//update page html
@@ -67,11 +60,8 @@ public class employeecontroller {
 		Optional<employeeTable> findId = employeerepoo.findById(id);
 		
 		 model.addAttribute("allEmployees", findId.get());
-		return "updateuserform";
-		
+		return "updateuserform";	
 	}
-	
-	
 	
 	// individual user 
 	
@@ -124,8 +114,6 @@ public class employeecontroller {
 		else {
 			return "homePage";
 		}
-	}
-	
-	
+	}	
 
 }
